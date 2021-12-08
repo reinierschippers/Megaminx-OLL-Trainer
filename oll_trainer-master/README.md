@@ -1,10 +1,7 @@
 # OLL trainer
-## https://bestsiteever.ru/oll/
+## http://reinierschippers.nl/oll_trainer-master/
 
-The purpose of this project and its details are described on speedsolving forum in [this post](https://www.speedsolving.com/forum/threads/oll-trainer.66924/).  
-
-Contributing workflow
----------------------
+T
 
 For contributing, follow the "fork-and-pull" Git workflow.
 
