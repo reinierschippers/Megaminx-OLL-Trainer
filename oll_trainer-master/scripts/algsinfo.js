@@ -44,8 +44,8 @@ var algsGroups = {
 var algsInfo = {
     1: {
         "name": "1A",
-        "a": "",
-        "a2": "",
+        "a": "(L R U R' U' R' F R F' L')",
+        "a2": "(L R U R' U' R' F R F' L')",
     },
     2: {
         "name": "1B",

@@ -1,9 +1,10 @@
 var allowStartingTimer;
-var timesArray = JSON.parse(loadLocal("olltimesarray", "[]"));
+var timesArray = JSON.parse(loadLocal("plltimesarray", "[]"));
 if (timesArray == null) // todo fix when figure out why JSON.parse("[]") returns 0
     timesArray = [];
 var lastScramble = "";
 var lastCase = 0;
+var useWeightedChoice = false;
 
 displayStats(); // after loading
 
@@ -13,7 +14,7 @@ function showScramble()
     window.allowStartingTimer = false;
     var s;
     if (window.selCases.length == 0) {
-        s = "click \"select cases\" above and pick some OLLs to practice";
+        s = "click \"select cases\" above and pick some olls to practice";
         document.getElementById("selInfo").innerHTML = "";
     }
     else {
@@ -61,7 +62,42 @@ function generateScramble()
     // get random case
     var caseNum = 0;
     if (recapArray.length == 0) { // train
-        caseNum = randomElement(window.selCases);
+        if (window.useWeightedChoice) {
+            var selCasesCounts = []; // count how often each case has appeared already
+            for (var i = 0; i < window.selCases.length; i++) 
+            {
+                var count = 0;
+                var currentoll = window.selCases[i];
+                for (var j = 0; j< window.timesArray.length; j++) 
+                {
+                    if (window.timesArray[j]["case"] == currentoll)
+                        count += 1;
+                }
+                selCasesCounts.push(count);
+            }
+
+            var expectedCount = 0; // calculate how often each case "should have" appeared
+            for (var i = 0; i < selCasesCounts.length; i++)
+            {
+                expectedCount += selCasesCounts[i];
+            }
+            var expectedCount = expectedCount / window.selCases.length;
+            
+            var selCaseWeights = []; // calculate the weights with which the next case is to be chosen. weights are arranged cumulatively
+            for (var i = 0; i < selCasesCounts.length; i++) 
+            {
+                if (i == 0)
+                selCaseWeights.push(3.5 ** (- (selCasesCounts[i] - expectedCount)));
+                else
+                selCaseWeights.push(selCaseWeights[i-1] + 3.5 ** (- (selCasesCounts[i] - expectedCount)));
+            }
+            caseNum = weightedRandomElement(selCases, selCaseWeights)
+            
+            //console.log(selCasesCounts, expectedCount, selCaseWeights, caseNum);
+        }
+
+        else // random choice of next case
+            caseNum = randomElement(window.selCases);
     } else { // recap
         // select the case
         caseNum = randomElement(window.recapArray);
@@ -71,8 +107,12 @@ function generateScramble()
 
     }
     var alg = randomElement(window.ollMap[caseNum]);
-    var rotation = randomElement(["", "y", "y2", "y'"]);
-    var finalAlg = alg
+    var rotation = randomElement(["", " U", " U'", " U2", " U2'"]);
+    var finalAlg = alg + rotation;
+
+    // for (var i = 1; i<=152; i++) {
+    //     console.log(window.ollMap[i][0] + ", " + window.ollMap[i][1] + ", " + window.ollMap[i][2] + ", " + window.ollMap[i][3] + ", ");
+    // }
 
     window.lastScramble = finalAlg;
     window.lastCase = caseNum;
@@ -396,7 +436,7 @@ function displayBox(event,i) {
         document.getElementById("boxalg").innerHTML += "<br><br>" + algsInfo[i]["a2"];
     //document.getElementById("boxsetup").innerHTML = "Setup: " + window.ollMap[i][0];
     document.getElementById("boxsetup").innerHTML = "Setup: " + algsInfo[i]["a"];
-    document.getElementById("boxImg").src="pic/"+i+".svg";
+    document.getElementById("boxImg").src="pic/"+i+".png";
 }
 
 function hideBox() {
@@ -439,10 +479,10 @@ function displayStats()
         var resultsByCase = []; // [57: [...], 12: [...], ...];
         for (var i = 0; i < len; i++)
         {
-            var currentOll = window.timesArray[i]["case"];
-            if (resultsByCase[currentOll] == null)
-                resultsByCase[currentOll] = [];
-            resultsByCase[currentOll].push( window.timesArray[i] );
+            var currentoll = window.timesArray[i]["case"];
+            if (resultsByCase[currentoll] == null)
+                resultsByCase[currentoll] = [];
+            resultsByCase[currentoll].push( window.timesArray[i] );
         }
 
         var keys = Object.keys(resultsByCase);
@@ -582,3 +622,48 @@ document.getElementById("bodyid").addEventListener("keydown", function(event) {
 
 loadstyle();
 applystyle();
+
+
+/* weightec choice settings*/
+
+// loads weighted choice setting 
+function loadWeightedChoice() {
+    try {
+        var useWC = localStorage.getItem('useweightedchoice');
+        if (useWC == "true") {
+            window.useWeightedChoice = true;
+        } else {
+            window.useWeightedChoice = false;
+        }
+        return true;
+    }
+    catch(e) { return false; }
+}
+
+// changes button text
+function applyWeightedChoice() {
+    if (window.useWeightedChoice) {
+        document.getElementById("weighted_coice_on_off").innerHTML = "using";
+    } else {
+        document.getElementById("weighted_coice_on_off").innerHTML = "not using";
+    }
+    saveWeightedChoice();
+}
+
+// saves the current wc setting
+function saveWeightedChoice() {
+    saveLocal("useweightedchoice", window.useWeightedChoice);
+}
+
+// changes the current setting from true/false to false/true
+function setWeightedChoice() {
+    if (window.useWeightedChoice)
+        window.useWeightedChoice = false;
+    else
+        window.useWeightedChoice = true;
+    applyWeightedChoice();
+    // console.log(useWeightedChoice);
+}
+
+loadWeightedChoice();
+applyWeightedChoice();
