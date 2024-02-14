@@ -432,7 +432,7 @@ function displayStats() {
         }
 
         var keys = Object.keys(resultsByCase);
-        keys.sort();
+        keys.sort((n1,n2) => n1 - n2);
 
         var s = "";
         // allocate them inside times span
