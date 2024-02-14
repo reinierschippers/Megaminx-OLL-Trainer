@@ -124,50 +124,6 @@ function replaceAll(str, mapObj) {
     });
 }
 
-// returns new string with transformed algorithm.
-// Returnes sequence of moves that get the cube to the same position as (alg + rot) does, but without cube rotations.
-// Example: applyRotationForAlgorithm("R U R'", "y") = "F U F'"
-/*function applyRotationForAlgorithm(alg, rot)
-{
-    var mapObj;
-    if (rot=="y")
-        mapObj = {R:"F",F:"L",L:"B",B:"R"};
-    if (rot=="y'")
-        mapObj = {R:"B",B:"L",L:"F",F:"R"};
-    if (rot=="y2")
-        mapObj = {R:"L",L:"R",B:"F",F:"B"};
-
-    return replaceAll(alg, mapObj);
-}
-
-/*function inverse_scramble(s)
-{
-    // deleting parantheses and double spaces
-    s = s.replaceAll('[', " ");
-    s = s.replaceAll(']', " ");
-    s = s.replaceAll('(', " ");
-    s = s.replaceAll(')', " ");
-    while(s.indexOf("  ") != -1)
-            s = s.replaceAll("  ", " ");
-
-    var arr = s.split(" ");
-    var result = "";
-    for (var i = 0; i < arr.length; i++)
-    {
-        var it = arr[i];
-        if (it.length == 0)
-            continue;
-        if (it[it.length - 1] == '2')
-            result = it + " " + result;
-        else if (it[it.length - 1] == '\'')
-            result = it.substr(0, it.length - 1) + " " + result;
-        else
-            result = it + "' " + result;
-    }
-
-    return result.substr(0, result.length-1);
-}
-
 /*        TIMER        */
 
 var startMilliseconds, stopMiliseconds; // date and time when timer was started

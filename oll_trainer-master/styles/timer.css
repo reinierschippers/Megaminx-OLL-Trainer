@@ -36,3 +36,7 @@ input {
     border-style: solid;
     border-radius: 5px;
 }
+
+span.timeResult {
+    cursor: pointer;
+}
