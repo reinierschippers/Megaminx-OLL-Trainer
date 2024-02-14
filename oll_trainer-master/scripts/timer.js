@@ -1,5 +1,5 @@
 var allowStartingTimer;
-var timesArray = JSON.parse(loadLocal("plltimesarray", "[]"));
+var timesArray = JSON.parse(loadLocal("olltimesarray", "[]"));
 if (timesArray == null) // todo fix when figure out why JSON.parse("[]") returns 0
     timesArray = [];
 var lastScramble = "";
@@ -317,15 +317,15 @@ var defTimerSize = 5;
 var defScrambleSize = 2;
 var defBaseSize = 1.3;
 
-var timerSize = parseFloat(loadLocal("zblltimerSize", "" + defTimerSize));
+var timerSize = parseFloat(loadLocal("ollTimerSize", "" + defTimerSize));
 if (isNaN(timerSize) || timerSize <= 0)
     timerSize = defTimerSize;
 
-var scrambleSize = parseFloat(loadLocal("zbllscrambleSize", "" + defScrambleSize));
+var scrambleSize = parseFloat(loadLocal("ollScrambleSize", "" + defScrambleSize));
 if (isNaN(scrambleSize) || scrambleSize <= 0)
     scrambleSize = defScrambleSize;
 
-var baseSize = parseFloat(loadLocal("baseSize", "" + defBaseSize));
+var baseSize = parseFloat(loadLocal("ollBaseSize", "" + defBaseSize));
 if (isNaN(baseSize) || baseSize <= 0)
     baseSize = defBaseSize;
 
@@ -337,18 +337,18 @@ function adjustSize(item, inc) {
     if (item == 'timer') {
         window.timerSize += inc
         document.getElementById('timer').style.fontSize = window.timerSize + "em";
-        saveLocal("zblltimerSize", "" + window.timerSize);
+        saveLocal("ollTimerSize", "" + window.timerSize);
     }
 
     if (item == 'scramble') {
         window.scrambleSize += inc
         document.getElementById('scramble').style.fontSize = window.scrambleSize + "em";
-        saveLocal("zbllscrambleSize", "" + window.scrambleSize);
+        saveLocal("ollScrambleSize", "" + window.scrambleSize);
     }
     if (item == 'body') {
         window.baseSize += inc
         document.getElementById('bodyid').style.fontSize = window.baseSize + "em";
-        saveLocal("baseSize", "" + window.baseSize);
+        saveLocal("ollBaseSize", "" + window.baseSize);
     }
 }
 
