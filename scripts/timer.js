@@ -615,6 +615,6 @@ applyWeightedChoice();
 function toggleSettings() {
     var settingsDiv = document.getElementById("settings");
     settingsDiv.style.display = showSettings ? "none" : "initial";
-    document.getElementById("settingsButton").innerText = showSettings ? "^" : "v";
+    document.getElementById("settingsButton").innerText = showSettings ? 'expand_less' : 'expand_more';
     showSettings = !showSettings;
 }
