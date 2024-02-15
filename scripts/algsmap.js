@@ -1,6 +1,6 @@
 var scramblesMap = {
   1: [
-    "F' U R' U' R' U' F U' R U F' R' U R U R F ",
+    "F' U R' U' R' U' F U' R U F' R' U R U R F",
   ],
   2: [
     "R' U F' U R' F R U R' U' F' U R U2' F U' R",

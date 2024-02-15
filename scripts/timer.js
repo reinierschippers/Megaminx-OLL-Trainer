@@ -18,11 +18,11 @@ function showScramble() {
         document.getElementById("selInfo").innerHTML = "";
     }
     else {
-        s = "Scramble: " + generateScramble();
+        s = generateScramble();
         window.allowStartingTimer = true;
     }
 
-    document.getElementById("scramble").innerHTML = s;
+    document.getElementById("scramble").innerHTML = "<span style='cursor: pointer;' onclick='displayBox(event, " + window.lastCase + ")'>" + s + "</span>";
 }
 
 function randomElement(arr) {
@@ -379,10 +379,12 @@ function displayBox(event, i) {
     document.getElementById("hintWindowBack").style.display = 'initial';
     document.getElementById("hintWindow").style.display = 'initial';
     document.getElementById("boxTitle").innerHTML = '#' + i + " " + algsInfo[i]["name"];
-    document.getElementById("boxalg").innerHTML = algsInfo[i]["a"];
-    if (algsInfo[i]["a2"] != "")
-        document.getElementById("boxalg").innerHTML += "<br>" + algsInfo[i]["a2"];
-    document.getElementById("boxsetup").innerHTML = algsInfo[i]["a"];
+    var algsStr = ""
+    for(const alg of algsInfo[i]["a"]) {
+        algsStr += alg + "<br/>"
+    }
+    document.getElementById("boxalg").innerHTML = algsStr;
+    document.getElementById("boxsetup").innerHTML = scramblesMap[i][0];
     document.getElementById("boxImg").src = "pic/" + i + ".png";
 }
 
