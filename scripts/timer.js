@@ -268,7 +268,7 @@ function timerAfterStop() {
 // sizes. Too tired, cannot produce normal code
 var defTimerSize = 5;
 var defScrambleSize = 2;
-var defBaseSize = 1.3;
+var defBaseSize = isMobile() ? 2.5 : 1.3;
 
 var timerSize = parseFloat(loadLocal("timerSize", "" + defTimerSize));
 if (isNaN(timerSize) || timerSize <= 0)
@@ -516,7 +516,14 @@ function loadstyle() {
             return true;
         }
     }
-    catch (e) { return false; }
+    catch (e) { 
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            resetStyle(true);
+        } else {
+            resetStyle(false);
+        }
+        return false; 
+    }
 }
 
 function applystyle() {
@@ -526,6 +533,7 @@ function applystyle() {
     document.getElementById("bodyid").style.backgroundColor = bgColor;
     document.getElementById("box").style.backgroundColor = bgColor;
     document.getElementById("bodyid").style.color = textColor;
+    document.getElementById("timer").style.color = textColor;
     var inputs = document.getElementsByClassName("settinginput");
     Array.prototype.forEach.call(inputs, function (el) {
         el.style.backgroundColor = bgColor;
@@ -545,6 +553,7 @@ function resetStyle(dark) {
     document.getElementById("linkscolor_in").value = dark ? "gold" : "#004411";
     applystyle();
     savestyle();
+    displayStats();
 }
 
 // add key listeners to blur settings inputs
