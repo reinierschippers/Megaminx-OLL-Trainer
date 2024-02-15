@@ -5,6 +5,7 @@ if (timesArray == null) // todo fix when figure out why JSON.parse("[]") returns
 var lastScramble = "";
 var lastCase = 0;
 var useWeightedChoice = false;
+var showSettings = false;
 
 displayStats(); // after loading
 
@@ -610,3 +611,10 @@ function setWeightedChoice() {
 
 loadWeightedChoice();
 applyWeightedChoice();
+
+function toggleSettings() {
+    var settingsDiv = document.getElementById("settings");
+    settingsDiv.style.display = showSettings ? "none" : "initial";
+    document.getElementById("settingsButton").innerText = showSettings ? "^" : "v";
+    showSettings = !showSettings;
+}

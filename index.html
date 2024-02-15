@@ -39,29 +39,33 @@
 				</div>
 			</div>
 			<!-- case description box -->
-			<div class="borderedContainer pad rowFlex center">
-				<div>
-					<a onclick="adjustSize('body', 0.1);">increase</a>/<a
-						onclick="adjustSize('body', -0.1);">decrease</a>
-					base size |
-					<a onclick="adjustSize('timer', 0.1);">increase</a>/<a
-						onclick="adjustSize('timer', -0.1);">decrease</a>
-					timer size |
-					<a onclick="adjustSize('scramble', 0.1);">increase</a>/<a
-						onclick="adjustSize('scramble', -0.1);">decrease</a> scramble size
-					<br> <a onclick="setWeightedChoice();" id="weighted_coice_on_off">using</a> weighted choice (cases
-					which haven't appeared as often are chosen more frequently)
-					<br>
-					colors (<a onclick='resetStyle(0)'>light</a>, <a onclick='resetStyle(1)'>dark</a>):
-					background <input type='text' value='#f5f5f5' class='settinginput' id='bgcolor_in'
-						onchange="applystyle();" placeholder='#f5f5f5' maxlength='12' />
-					, text <input type='text' value='black' class='settinginput' id='textcolor_in'
-						onchange="applystyle();" placeholder='#000' maxlength='12' />
-					, links <input type='text' value='#004411' class='settinginput' id='linkscolor_in'
-						onchange="applystyle();" placeholder='#004411' maxlength='12' />
-					<br>
+			<div class="borderedContainer pad rowFlex center"
+				style="justify-content: space-between; flex-direction: row-reverse;">
+				<a id="settingsButton" onclick="toggleSettings()" style="align-self: flex-start;">+</a>
+				<div class="colFlex">
 					<span id="last_scramble">last scramble: ...
 					</span>
+					<div id="settings" style="display: none;">
+						<a onclick="adjustSize('body', 0.1);">increase</a>/<a
+							onclick="adjustSize('body', -0.1);">decrease</a>
+						base size <br />
+						<a onclick="adjustSize('timer', 0.1);">increase</a>/<a
+							onclick="adjustSize('timer', -0.1);">decrease</a>
+						timer size <br />
+						<a onclick="adjustSize('scramble', 0.1);">increase</a>/<a
+							onclick="adjustSize('scramble', -0.1);">decrease</a> scramble size
+						<br> <a onclick="setWeightedChoice();" id="weighted_coice_on_off">using</a> weighted choice
+						(cases
+						which haven't appeared as often are chosen more frequently)
+						<br>
+						<a onclick='resetStyle(0)'>light</a> / <a onclick='resetStyle(1)'>dark</a> colors <br />
+						background <input type='text' value='#f5f5f5' class='settinginput' id='bgcolor_in'
+							onchange="applystyle();" placeholder='#f5f5f5' maxlength='12' /> <br />
+						text: <input type='text' value='black' class='settinginput' id='textcolor_in'
+							onchange="applystyle();" placeholder='#000' maxlength='12' /> <br />
+						links <input type='text' value='#004411' class='settinginput' id='linkscolor_in'
+							onchange="applystyle();" placeholder='#004411' maxlength='12' />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -114,9 +118,8 @@
 				</ul>
 			</div>
 		</div>
-		<div id="modeButtons" class="colFlex" >
-			<a class='abutton' id='doneButton' onclick='changeMode(1)'
-				title='Train selected cases randomly'>Train</a>
+		<div id="modeButtons" class="colFlex">
+			<a class='abutton' id='doneButton' onclick='changeMode(1)' title='Train selected cases randomly'>Train</a>
 			<a class='abutton' id='recapButton' onclick='changeMode(2)'
 				title='Go through all the selected cases once'>Recap</a>
 		</div>
