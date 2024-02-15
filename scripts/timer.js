@@ -1,5 +1,5 @@
 var allowStartingTimer;
-var timesArray = JSON.parse(loadLocal("olltimesarray", "[]"));
+var timesArray = JSON.parse(loadLocal(timesArrayKey, "[]"));
 if (timesArray == null) // todo fix when figure out why JSON.parse("[]") returns 0
     timesArray = [];
 var lastScramble = "";
@@ -54,7 +54,7 @@ function displayPracticeInfo() {
 function generateScramble() {
     if (window.lastScramble != "")
         document.getElementById("last_scramble").innerHTML = "last scramble: " + window.lastScramble +
-            " <span onclick='displayBox(event," + lastCase + ")' class='ollNameStats'>(" + algsInfo[lastCase]["name"] + ") </span><a class='settings' onclick='confirmUnsel(" + lastCase + ")' style='color:" + document.getElementById("linkscolor_in").value + ";'>unselect</a>";
+            " <span onclick='displayBox(event," + lastCase + ")' class='caseNameStats'>(" + algsInfo[lastCase]["name"] + ") </span><a class='settings' onclick='confirmUnsel(" + lastCase + ")' style='color:" + document.getElementById("linkscolor_in").value + ";'>unselect</a>";
     displayPracticeInfo();
     // get random case
     var caseNum = 0;
@@ -63,9 +63,9 @@ function generateScramble() {
             var selCasesCounts = []; // count how often each case has appeared already
             for (var i = 0; i < window.selCases.length; i++) {
                 var count = 0;
-                var currentoll = window.selCases[i];
+                var currentCase = window.selCases[i];
                 for (var j = 0; j < window.timesArray.length; j++) {
-                    if (window.timesArray[j]["case"] == currentoll)
+                    if (window.timesArray[j]["case"] == currentCase)
                         count += 1;
                 }
                 selCasesCounts.push(count);
@@ -99,13 +99,9 @@ function generateScramble() {
         window.recapArray.splice(index, 1);
 
     }
-    var alg = randomElement(window.ollMap[caseNum]);
+    var alg = randomElement(window.scramblesMap[caseNum]);
     var rotation = randomElement(["", " U", " U'", " U2", " U2'"]);
     var finalAlg = alg + rotation;
-
-    // for (var i = 1; i<=152; i++) {
-    //     console.log(window.ollMap[i][0] + ", " + window.ollMap[i][1] + ", " + window.ollMap[i][2] + ", " + window.ollMap[i][3] + ", ");
-    // }
 
     window.lastScramble = finalAlg;
     window.lastCase = caseNum;
@@ -273,15 +269,15 @@ var defTimerSize = 5;
 var defScrambleSize = 2;
 var defBaseSize = 1.3;
 
-var timerSize = parseFloat(loadLocal("ollTimerSize", "" + defTimerSize));
+var timerSize = parseFloat(loadLocal("timerSize", "" + defTimerSize));
 if (isNaN(timerSize) || timerSize <= 0)
     timerSize = defTimerSize;
 
-var scrambleSize = parseFloat(loadLocal("ollScrambleSize", "" + defScrambleSize));
+var scrambleSize = parseFloat(loadLocal("scrambleSize", "" + defScrambleSize));
 if (isNaN(scrambleSize) || scrambleSize <= 0)
     scrambleSize = defScrambleSize;
 
-var baseSize = parseFloat(loadLocal("ollBaseSize", "" + defBaseSize));
+var baseSize = parseFloat(loadLocal("baseSize", "" + defBaseSize));
 if (isNaN(baseSize) || baseSize <= 0)
     baseSize = defBaseSize;
 
@@ -293,18 +289,18 @@ function adjustSize(item, inc) {
     if (item == 'timer') {
         window.timerSize += inc
         document.getElementById('timer').style.fontSize = window.timerSize + "em";
-        saveLocal("ollTimerSize", "" + window.timerSize);
+        saveLocal("timerSize", "" + window.timerSize);
     }
 
     if (item == 'scramble') {
         window.scrambleSize += inc
         document.getElementById('scramble').style.fontSize = window.scrambleSize + "em";
-        saveLocal("ollScrambleSize", "" + window.scrambleSize);
+        saveLocal("scrambleSize", "" + window.scrambleSize);
     }
     if (item == 'body') {
         window.baseSize += inc
         document.getElementById('bodyid').style.fontSize = window.baseSize + "em";
-        saveLocal("ollBaseSize", "" + window.baseSize);
+        saveLocal("baseSize", "" + window.baseSize);
     }
 }
 
@@ -385,7 +381,6 @@ function displayBox(event, i) {
     document.getElementById("boxalg").innerHTML = algsInfo[i]["a"];
     if (algsInfo[i]["a2"] != "")
         document.getElementById("boxalg").innerHTML += "<br>" + algsInfo[i]["a2"];
-    //document.getElementById("boxsetup").innerHTML = "Setup: " + window.ollMap[i][0];
     document.getElementById("boxsetup").innerHTML = algsInfo[i]["a"];
     document.getElementById("boxImg").src = "pic/" + i + ".png";
 }
@@ -413,7 +408,7 @@ function makeHtmlDisplayableTime(r) {
 /// displays averages etc.
 /// fills "times" right panel with times and last result info
 function displayStats() {
-    saveLocal("olltimesarray", JSON.stringify(window.timesArray));
+    saveLocal(timesArrayKey, JSON.stringify(window.timesArray));
     var len = window.timesArray.length;
 
     var el = document.getElementById("times");
@@ -428,10 +423,10 @@ function displayStats() {
         // case-by-case
         var resultsByCase = []; // [57: [...], 12: [...], ...];
         for (var i = 0; i < len; i++) {
-            var currentoll = window.timesArray[i]["case"];
-            if (resultsByCase[currentoll] == null)
-                resultsByCase[currentoll] = [];
-            resultsByCase[currentoll].push(window.timesArray[i]);
+            var currentCase = window.timesArray[i]["case"];
+            if (resultsByCase[currentCase] == null)
+                resultsByCase[currentCase] = [];
+            resultsByCase[currentCase].push(window.timesArray[i]);
         }
 
         var keys = Object.keys(resultsByCase);
@@ -440,19 +435,19 @@ function displayStats() {
         var s = "";
         // allocate them inside times span
         for (var j = 0; j < keys.length; j++) {
-            var oll = keys[j];
+            var case_ = keys[j];
             var timesString = "";
             var meanForCase = 0.0;
             var i = 0;
-            for (; i < resultsByCase[oll].length; i++) {
-                timesString += makeHtmlDisplayableTime(resultsByCase[oll][i]);
-                if (i != resultsByCase[oll].length - 1)
+            for (; i < resultsByCase[case_].length; i++) {
+                timesString += makeHtmlDisplayableTime(resultsByCase[case_][i]);
+                if (i != resultsByCase[case_].length - 1)
                     timesString += ", ";
                 // avg
                 meanForCase *= i / (i + 1);
-                meanForCase += resultsByCase[oll][i]["ms"] / (i + 1);
+                meanForCase += resultsByCase[case_][i]["ms"] / (i + 1);
             }
-            s += "<div class='timeEntry'><div class='ollNameHeader'><span class='ollNameStats' onclick='displayBox(event," + keys[j] + ")'>" + algsInfo[oll]["name"] + "</span>: " + msToHumanReadable(meanForCase) + "</div>" + timesString + "</div>";
+            s += "<div class='timeEntry'><div><span class='caseNameStats' onclick='displayBox(event," + keys[j] + ")'>" + algsInfo[case_]["name"] + "</span>: " + msToHumanReadable(meanForCase) + "</div>" + timesString + "</div>";
         }
         el.innerHTML = s;
     }
@@ -524,25 +519,29 @@ function loadstyle() {
 }
 
 function applystyle() {
-    document.getElementById("bodyid").style.backgroundColor = document.getElementById("bgcolor_in").value;
-    document.getElementById("box").style.backgroundColor = document.getElementById("bgcolor_in").value;
-    document.getElementById("bodyid").style.color = timer.style.color = document.getElementById("textcolor_in").value;
+    const bgColor = document.getElementById("bgcolor_in").value;
+    const textColor = document.getElementById("textcolor_in").value;
+    const linksColor = document.getElementById("linkscolor_in").value;
+    document.getElementById("bodyid").style.backgroundColor = bgColor;
+    document.getElementById("box").style.backgroundColor = bgColor;
+    document.getElementById("bodyid").style.color = textColor;
     var inputs = document.getElementsByClassName("settinginput");
     Array.prototype.forEach.call(inputs, function (el) {
-        el.style.backgroundColor = document.getElementById("bgcolor_in").value;
-        el.style.color = document.getElementById("textcolor_in").value;
+        el.style.backgroundColor = bgColor;
+        el.style.color = textColor;
     });
     var links = document.getElementsByTagName("a");
     Array.prototype.forEach.call(links, function (el) {
-        el.style.color = document.getElementById("linkscolor_in").value;
+        el.style.color = linksColor;
+        el.style.backgroundColor = bgColor;
     });
     savestyle();
 }
 
 function resetStyle(dark) {
-    document.getElementById("bgcolor_in").value = dark ? "#161616" : "#f5f5f5";
+    document.getElementById("bgcolor_in").value = dark ? "#222" : "#f5f5f5";
     document.getElementById("textcolor_in").value = dark ? "white" : "black";
-    document.getElementById("linkscolor_in").value = dark ? "#ffff00" : "#004411";
+    document.getElementById("linkscolor_in").value = dark ? "gold" : "#004411";
     applystyle();
     savestyle();
 }

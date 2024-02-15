@@ -1,4 +1,4 @@
-var ollMap = {
+var scramblesMap = {
   1: [
     "F' U R' U' R' U' F U' R U F' R' U R U R F ",
   ],
