@@ -398,10 +398,13 @@ function hideBox() {
 /// \param r - result instance (see makeResultInstance)
 /// \returns html code for displaying the instance
 function makeHtmlDisplayableTime(r) {
-    var classname = (r == window.timesArray[window.timesArray.length - 1]) ? "timeResultBold" : "timeResult";
-    return resultString = "<span class='" + classname + "' title='" +
+    var isMostRecent = (r == window.timesArray[window.timesArray.length - 1]);
+    var classname = isMostRecent ? "timeResultBold" : "timeResult";
+    var styleString = isMostRecent ? "style='color: " + document.getElementById("linkscolor_in").value + "'" : ""; 
+    resultString = "<span class='" + classname + "' " + styleString + " title='" +
         escapeHtml(r["details"]) + "' onclick='confirmRem("
         + r["index"] + ")' >" + r["time"] + "</span>";
+    return resultString;
 }
 
 /// fills resultInfo container with info about given result instance

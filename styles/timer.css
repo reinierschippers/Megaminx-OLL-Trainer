@@ -1,0 +1,46 @@
+div.timeEntry {
+    margin-bottom: 5px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+div#timerDiv {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+}
+
+div#stats {
+    width: 30%;
+}
+
+div#times {
+    overflow: scroll;
+}
+
+div#timer_and_stats {
+    height: 60%;
+}
+
+div.practice_layout {
+    width: 100%;
+    height: 100%;
+}
+
+div#mainTable {
+    height: 100%;
+}
+
+input {
+    border-style: solid;
+    border-radius: 5px;
+}
+
+span.timeResult {
+    cursor: pointer;
+}
+
+span.timeResultBold {
+    cursor: pointer;
+}
