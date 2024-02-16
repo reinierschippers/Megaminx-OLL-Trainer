@@ -20,6 +20,13 @@
 			'opsz' 24
 	}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+<script>
+	Coloris({
+		alpha: false,
+	})
+</script>
 
 <head>
 	<title>
@@ -35,8 +42,8 @@
 					<a id='selectBtn' onclick='changeMode(0)'>select cases</a><span id='selInfo'></span>
 				</div>
 			</div>
-			<div id="scramble" class="borderedContainer pad center rowFlex">
-				(scramble will be there)
+			<div class="borderedContainer pad center rowFlex">
+				<div id="scramble"></div>
 			</div>
 			<div id="timer_and_stats" class="rowFlex grow">
 				<div id="timerDiv" class="borderedContainer">
@@ -56,29 +63,59 @@
 						class="material-symbols-outlined" style="font-size: 1.5em;">
 						expand_less
 					</span></a>
-				<div class="colFlex">
+				<div class="colFlex" style="width: 100%;">
 					<span id="last_scramble">last scramble: ...
 					</span>
 					<div id="settings" style="display: none;">
-						<a onclick="adjustSize('body', 0.1);">increase</a>/<a
-							onclick="adjustSize('body', -0.1);">decrease</a>
-						base size <br />
-						<a onclick="adjustSize('timer', 0.1);">increase</a>/<a
-							onclick="adjustSize('timer', -0.1);">decrease</a>
-						timer size <br />
-						<a onclick="adjustSize('scramble', 0.1);">increase</a>/<a
-							onclick="adjustSize('scramble', -0.1);">decrease</a> scramble size
-						<br> <a onclick="setWeightedChoice();" id="weighted_coice_on_off">using</a> weighted choice
-						(cases
-						which haven't appeared as often are chosen more frequently)
-						<br>
-						<a onclick='resetStyle(0)'>light</a> / <a onclick='resetStyle(1)'>dark</a> colors <br />
-						background <input type='text' value='#f5f5f5' class='settinginput' id='bgcolor_in'
-							onchange="applystyle();" placeholder='#f5f5f5' maxlength='12' /> <br />
-						text: <input type='text' value='black' class='settinginput' id='textcolor_in'
-							onchange="applystyle();" placeholder='#000' maxlength='12' /> <br />
-						links <input type='text' value='#004411' class='settinginput' id='linkscolor_in'
-							onchange="applystyle();" placeholder='#004411' maxlength='12' />
+						<div class="colFlex" style="gap: 0.2em;">
+							<div class="settingsEntry">
+								<div>Weighted choice</div>
+								<a onclick="setWeightedChoice();" id="weighted_coice_on_off">using</a>
+							</div>
+							<div class="settingsEntry">
+								<div>Base size</div>
+								<div>
+									<a onclick="adjustSize('body', 0.1);">increase</a> /
+									<a onclick="adjustSize('body', -0.1);">decrease</a>
+								</div>
+							</div>
+							<div class="settingsEntry">
+								<div>Timer size</div>
+								<div>
+									<a onclick="adjustSize('timer', 0.1);">increase</a> / 
+									<a onclick="adjustSize('timer', -0.1);">decrease</a>
+								</div>
+							</div>
+							<div class="settingsEntry">
+								<div>Scramble size</div>
+								<div>
+									<a onclick="adjustSize('scramble', 0.1);">increase</a> /
+									<a onclick="adjustSize('scramble', -0.1);">decrease</a>
+								</div>
+							</div>
+							<div class="settingsEntry">
+								<div>Theme</div>
+								<div>
+									<a onclick="resetStyle(0);" id="weighted_coice_on_off">light</a> /
+									<a onclick="resetStyle(1);" id="weighted_coice_on_off">dark</a>
+								</div>
+							</div>
+							<div class="settingsEntry">
+								<div>Background</div><input type='button' value='#f5f5f5' class='settinginput'
+									id='bgcolor_in' onchange="applystyle();" placeholder='#f5f5f5' maxlength='12'
+									data-coloris />
+							</div>
+							<div class="settingsEntry">
+								<div>Text</div> <input type='button' value='black' class='settinginput'
+									id='textcolor_in' onchange="applystyle();" placeholder='#000' maxlength='12'
+									data-coloris />
+							</div>
+							<div class="settingsEntry">
+								<div>Highlights</div> <input type='button' value='#004411' class='settinginput'
+									id='linkscolor_in' onchange="applystyle();" placeholder='#004411' maxlength='12'
+									data-coloris />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -111,7 +148,7 @@
 	<div class="selection_layout" style="margin: 0.5em;">
 		<div class="colFlex pad" style="justify-content: space-between;">
 			<div>
-				<h1>PLL Trainer</h1>
+				<h1>OLL Trainer</h1>
 				<h2><a href=https://mihlefeld.github.io/Megaminx-PLL-Trainer />Switch to PLL trainer</a></h2>
 				<h3>This trainer is based on Reinier Schippers' <a
 						href="https://reinierschippers.nl/oll_trainer-master/">OLL Trainer</a></h3>

@@ -1,6 +1,6 @@
 div.timeEntry {
-    margin-bottom: 5px;
-    border-bottom-width: 1px;
+    margin-bottom: 0.1em;
+    border-bottom-width: 0.05em;
     border-bottom-style: solid;
 }
 div#timerDiv {
@@ -9,6 +9,8 @@ div#timerDiv {
     justify-content: center;
     align-items: center;
     font-weight: 800;
+    touch-action: manipulation;
+    user-select: none;
 }
 
 div#stats {
@@ -34,7 +36,7 @@ div#mainTable {
 
 input {
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 0.2em;
 }
 
 span.timeResult {
@@ -47,6 +49,47 @@ span.timeResultBold {
 
 div#settings {
     border-top-style: solid;
-    border-top-width: 2px;
+    border-top-width: 0.05em;
     margin-top: 0.1em;
+}
+
+div#box {
+    background-color: var(--backgroundColor);
+}
+
+.clr-field button {
+    right: auto;
+    left:5px;
+    border-radius: 5px;
+    height: 2em !important;
+    width: 2em !important;
+}
+
+.clr-field {
+    display: inline-flex !important;;
+}
+
+input[type=button] {
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: var(--borderRadius);
+    width: 10em;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+div#scramble span {
+    cursor: pointer;
+}
+
+div#scramble span:hover {
+    color: var(--accentColor);
+}
+
+.settingsEntry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

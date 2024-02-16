@@ -22,7 +22,7 @@ function showScramble() {
         window.allowStartingTimer = true;
     }
 
-    document.getElementById("scramble").innerHTML = "<span style='cursor: pointer;' onclick='displayBox(event, " + window.lastCase + ")'>" + s + "</span>";
+    document.getElementById("scramble").innerHTML = "<span onclick='displayBox(event, " + window.lastCase + ")'>" + s + "</span>";
 }
 
 function randomElement(arr) {
@@ -55,7 +55,7 @@ function displayPracticeInfo() {
 function generateScramble() {
     if (window.lastScramble != "")
         document.getElementById("last_scramble").innerHTML = "last scramble: " + window.lastScramble +
-            " <span onclick='displayBox(event," + lastCase + ")' class='caseNameStats'>(" + algsInfo[lastCase]["name"] + ") </span><a class='settings' onclick='confirmUnsel(" + lastCase + ")' style='color:" + document.getElementById("linkscolor_in").value + ";'>unselect</a>";
+            " <span onclick='displayBox(event," + lastCase + ")' class='caseNameStats'>(" + algsInfo[lastCase]["name"] + ") </span><a class='settings' onclick='confirmUnsel(" + lastCase + ")' style='color: var(--accentColor);'>unselect</a>";
     displayPracticeInfo();
     // get random case
     var caseNum = 0;
@@ -397,7 +397,7 @@ function hideBox() {
 function makeHtmlDisplayableTime(r) {
     var isMostRecent = (r == window.timesArray[window.timesArray.length - 1]);
     var classname = isMostRecent ? "timeResultBold" : "timeResult";
-    var styleString = isMostRecent ? "style='color: " + document.getElementById("linkscolor_in").value + "'" : ""; 
+    var styleString = isMostRecent ? "style='color: var(--accentColor)'" : ""; 
     resultString = "<span class='" + classname + "' " + styleString + " title='" +
         escapeHtml(r["details"]) + "' onclick='confirmRem("
         + r["index"] + ")' >" + r["time"] + "</span>";
@@ -528,23 +528,17 @@ function loadstyle() {
 }
 
 function applystyle() {
-    const bgColor = document.getElementById("bgcolor_in").value;
-    const textColor = document.getElementById("textcolor_in").value;
-    const linksColor = document.getElementById("linkscolor_in").value;
-    document.getElementById("bodyid").style.backgroundColor = bgColor;
-    document.getElementById("box").style.backgroundColor = bgColor;
-    document.getElementById("bodyid").style.color = textColor;
+    const bgColor = document.getElementById("bgcolor_in");
+    const textColor = document.getElementById("textcolor_in");
+    const linksColor = document.getElementById("linkscolor_in");
+    var body = document.body;
+    body.style.setProperty("--backgroundColor", bgColor.value);
+    body.style.setProperty("--textColor", textColor.value);
+    body.style.setProperty("--accentColor", linksColor.value);
+    bgColor.dispatchEvent(new Event('input', { bubbles: true }));
+    textColor.dispatchEvent(new Event('input', { bubbles: true }));
+    linksColor.dispatchEvent(new Event('input', { bubbles: true }));
     document.getElementById("timer").style.color = textColor;
-    var inputs = document.getElementsByClassName("settinginput");
-    Array.prototype.forEach.call(inputs, function (el) {
-        el.style.backgroundColor = bgColor;
-        el.style.color = textColor;
-    });
-    var links = document.getElementsByTagName("a");
-    Array.prototype.forEach.call(links, function (el) {
-        el.style.color = linksColor;
-        el.style.backgroundColor = bgColor;
-    });
     savestyle();
 }
 

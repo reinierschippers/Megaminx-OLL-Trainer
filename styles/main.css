@@ -1,8 +1,8 @@
 div.borderedContainer {
-    border-width: 2px;
+    border-width: var(--borderWidth);
     border-style: solid;
-    border-radius: 10px;
-    margin: 5px;
+    border-radius: var(--borderRadius);
+    margin: 0.1em;
 }
 
 div.rowFlex {
@@ -29,7 +29,7 @@ body.niceBody {
 }
 
 .pad {
-    padding: 5px 10px;
+    padding: 0.1em 0.2em;
 }
 
 .center {
@@ -44,6 +44,7 @@ body.niceBody {
 a {
     text-decoration: underline;
     cursor: pointer;
+    color: var(--accentColor);
 }
 
 
@@ -52,6 +53,13 @@ body {
     font-family: "Titilium Web", sans-serif;
     font-weight: 400;
     font-size: 1.3em;
+    --backgroundColor: #222;
+    --accentColor: gold;
+    --textColor: white;
+    --borderRadius: 0.3em;
+    --borderWidth: 0.1em;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
 }
 
 
