@@ -1,8 +1,23 @@
+var baseUrl;
 function main() {
     loadSettings();
     applySettings();
     timer = document.getElementById('timer');
     timer.innerHTML = "ready";
+    var initialMode = 0;
+
+    var splitUrl = window.location.href.split('?');
+    baseUrl = splitUrl[0];
+    if (splitUrl.length > 1 && splitUrl[1] == 'train') {
+        initialMode = 1;
+    }
+    if (splitUrl.length > 1 && splitUrl[1] == 'recap') {
+        initialMode = 2;
+    }
+
+    window.addEventListener('popstate', (event) => {
+        changeMode(0);
+    })
 
     /// handles keypup and keydown events. Starts timer etc.
     document.getElementById("bodyid").addEventListener("keydown", function (event) {
@@ -53,10 +68,10 @@ function main() {
             e.preventDefault();
         }
     });
-    
+
     loadSelection();
     displayStats();
-    changeMode(0);
+    changeMode(initialMode);
     document.getElementById('bodyid').style.display = "flex";
 }
 
