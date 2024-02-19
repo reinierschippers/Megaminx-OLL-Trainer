@@ -22,18 +22,21 @@ function main() {
     /// handles keypup and keydown events. Starts timer etc.
     document.getElementById("bodyid").addEventListener("keydown", function (event) {
         // delete hotkey - remove last
-        if (event.keyCode == 46 && !running) {
-            if (!!window.event.shiftKey)
+        if (event.code == "Delete" && !running) {
+            if (!!event.shiftKey)
                 confirmClear();
             else
                 confirmRemLast();
             return;
         }
 
+        if (event.code == "KeyH" && !running) {
+            showHint(null, window.lastCase);
+        }
+
         if (!allowed || !window.allowStartingTimer)
             return; // preventing auto-repeat and empty scrambles
-
-        if (event.keyCode != 16) // shift
+        if (event.code != "ShiftLeft") // shift
             allowed = false;
 
         if (running) {
@@ -41,7 +44,7 @@ function main() {
             timerStop();
             return;
         }
-        else if (event.keyCode == timerActivatingButton) {
+        else if (event.code == "Space") {
             timerSetReady();
             return;
         }
