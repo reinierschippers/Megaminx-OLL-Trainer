@@ -366,8 +366,8 @@ var algsInfo = {
     "38": {
         "name": "11B-",
         "a": [
-            "(R' U' R' L F R F' L' U R)",
-            "y2 (R U2' R' U' R' F R F' U R U2 R')"
+            "y2' (R' U' R' L F R F' L' U R)",
+            "(R U2' R' U' R' F R F' U R U2 R')"
         ],
         "s": "F' U R F R2' U' F' U' F U2 R U' R F' R' U' F "
     },
