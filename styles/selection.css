@@ -4,7 +4,6 @@ div.itemSel {
     touch-action: manipulation;
     border-color: var(--accent);
     color: var(--accentText);
-    transition: all 0.2s;
 }
 
 div.itemUnsel {
@@ -14,7 +13,6 @@ div.itemUnsel {
     background-color: var(--secondary);
     border-color: var(--secondary);
     color: var(--secondaryText);
-    transition: all 0.2s;
 }
 
 div#cases_selection {
