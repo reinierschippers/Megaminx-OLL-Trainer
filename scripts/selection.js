@@ -65,25 +65,25 @@ function selectAllNone() {
 }
 
 /// \returns true if at least one case selected in group groupName
-function isAtLeastOneSelected(groupName) {
+function areAllSelected(groupName) {
     var indeces = algsGroups[groupName];
     for (var i in indeces) {
-        if (selCases.indexOf(indeces[i]) != -1)
-            return true;
+        if (selCases.indexOf(indeces[i]) == -1)
+            return false;
     }
-    return false;
+    return true;
 }
 
 // select or deselect all cases in the group
 function selectCaseGroup(name) {
-    var aos = isAtLeastOneSelected(name);
+    var allSelected = areAllSelected(name);
     var indeces = algsGroups[name];
     for (i in indeces) {
-        if (aos) { // need to delete
-            var j = selCases.indexOf(indeces[i]);
+        var j = selCases.indexOf(indeces[i]);
+        if (allSelected) { // need to delete
             if (j != -1)
                 selCases.splice(j, 1);
-        } else { // need to add
+        } else if (j == -1) { // need to add
             selCases.push(indeces[i]);
         }
     }

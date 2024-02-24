@@ -85,10 +85,12 @@
 			<div class="rowFlex center" style="justify-content: space-between;">
 				<h1>OLL Trainer | <a href=https://mihlefeld.github.io/Megaminx-PLL-Trainer />PLL&nbsp;Trainer</a></h1>
 				<div class="colFlex">
-					<button id="settingsButton" onclick="decideShowDotToggle(); openDialog('settings')"
-						class="material-symbols-outlined abutton largeButton">
-						settings
-					</button>
+					<div id="settingsButton">
+						<button onclick="decideShowDotToggle(); openDialog('settings')"
+							class="material-symbols-outlined abutton largeButton">
+							settings
+						</button>
+					</div>
 					<div id="modeButtons" class="colFlex">
 						<!-- <input type="button" class="abutton" onclick="changeMode('train')" value="Train" /> -->
 						<!-- <input type="button" class="abutton" onclick="changeMode('recap')" value="Recap" /> -->
