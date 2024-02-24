@@ -48,12 +48,13 @@ function itemClicked(i) {
 }
 
 function selectAllNone() {
-    var nothingSelected = (window.selCases.length == 0);
     var algs = Object.keys(scramblesMap).length;
     if (!currentSettings.showDots) {
         algs -= optionalAlgsCount;
     }
-    if (nothingSelected) {
+    var allSelected = window.selCases.length == algs;
+    if (!allSelected) {
+        selCases = [];
         for (var i = 1; i <= algs; ++i)
             selCases.push(i);
     } else {
@@ -105,7 +106,7 @@ function makeDivNormal(groupname) {
         s += "<div id='itemTd" + i + "' ondblclick='showHint(this, " + i + ")' onclick='itemClicked(" + i + ")' class='" + (sel ? "itemSel" : "itemUnsel") + " borderedContainer' title='" + algsInfo[i]["name"] + "'>" +
             "<img class='caseImage' id='sel" + i + "' src='pic/" + i + ".svg' ></div>";
     }
-    s = "<div class='colFlex' style='width: fit-content'> <div class='borderedContainer " + (allSelected ? "itemSel" : "itemUnsel") + " pad'" + s;
+    s = "<div class='colFlex' style='width: fit-content'> <div class='borderedContainer " + (allSelected ? "itemSel" : "itemUnsel") + " pad groupNameDiv'" + s;
     s += "</div></div>";
     return s;
 }
