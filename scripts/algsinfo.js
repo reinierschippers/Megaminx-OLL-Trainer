@@ -917,7 +917,8 @@ var algsInfo = {
     "109": {
         "name": "25B+",
         "a": [
-            "(R' U2 R U2 R' F R' F' R U R)"
+            "(R' U2 R U2 R' F R' F' R U R)",
+            "y (R U' R' U2' F R' F' R U2 R U R')" 
         ],
         "s": "R' U' F' U' R' U F R' F' R F' U' F R U2 F R "
     },
