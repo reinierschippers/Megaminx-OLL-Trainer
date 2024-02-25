@@ -1,7 +1,7 @@
 {
     "name": "OLL Trainer",
     "short_name": "OLL",
-    "start_url": "/index.html",
+    "start_url": "/Megaminx-OLL-Trainer/index.html",
     "description": "Alg trainer for megaminx OLL",
     "display": "standalone",
     "theme_color": "#B1CFA1",
