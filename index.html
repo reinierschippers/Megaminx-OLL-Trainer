@@ -10,7 +10,7 @@
 			if ("serviceWorker" in navigator) {
 				try {
 					const registration = await navigator.serviceWorker.register("/Megaminx-OLL-Trainer/serviceworker.js", {
-						scope: "/",
+						scope: "/Megaminx-OLL-Trainer",
 					});
 					if (registration.installing) {
 						console.log("Service worker installing");
