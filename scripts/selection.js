@@ -61,6 +61,7 @@ function selectAllNone() {
         selCases = [];
     }
     renderSelection();
+    resize();
     saveSelection();
 }
 
