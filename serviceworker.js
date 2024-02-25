@@ -49,30 +49,30 @@ self.addEventListener("fetch", (event) => {
 });
 
 var assets = [
-  "/",
-  "/index.html",
-  "/icon.png",
-  "/styles/hint.css",
-  "/styles/main.css",
-  "/styles/selection.css",
-  "/styles/settings.css",
-  "/styles/timer.css",
-  "/scripts/algsinfo.js",
-  "/scripts/algsmap.js",
-  "/scripts/main.js",
-  "/scripts/practice.js",
-  "/scripts/saveload.js",
-  "/scripts/selection.js",
-  "/scripts/settings.js",
-  "/scripts/timer.js",
-  "/scripts/utils.js",
+  "/Megaminx-OLL-Trainer",
+  "/Megaminx-OLL-Trainer/index.html",
+  "/Megaminx-OLL-Trainer/icon.png",
+  "/Megaminx-OLL-Trainer/styles/hint.css",
+  "/Megaminx-OLL-Trainer/styles/main.css",
+  "/Megaminx-OLL-Trainer/styles/selection.css",
+  "/Megaminx-OLL-Trainer/styles/settings.css",
+  "/Megaminx-OLL-Trainer/styles/timer.css",
+  "/Megaminx-OLL-Trainer/scripts/algsinfo.js",
+  "/Megaminx-OLL-Trainer/scripts/algsmap.js",
+  "/Megaminx-OLL-Trainer/scripts/main.js",
+  "/Megaminx-OLL-Trainer/scripts/practice.js",
+  "/Megaminx-OLL-Trainer/scripts/saveload.js",
+  "/Megaminx-OLL-Trainer/scripts/selection.js",
+  "/Megaminx-OLL-Trainer/scripts/settings.js",
+  "/Megaminx-OLL-Trainer/scripts/timer.js",
+  "/Megaminx-OLL-Trainer/scripts/utils.js",
   "https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap",
   "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
   "https://colorjs.io/dist/color.global.js"
 ]
 
 for (var i = 1; i <= 259; i++) {
-    assets.push(`/pic/${i}.svg`)
+    assets.push(`/Megaminx-OLL-Trainer/pic/${i}.svg`)
 }
 
 self.addEventListener("install", installEvent => {
