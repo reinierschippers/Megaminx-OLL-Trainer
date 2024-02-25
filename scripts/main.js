@@ -1,7 +1,6 @@
 var baseUrl;
 
 function resize(event) {
-    console.log('test')
     if (window.history.state != 'select') {
         return;
     }
