@@ -5,8 +5,31 @@
 	<title>
 		OLL Trainer
 	</title>
+	<script>
+		const registerServiceWorker = async () => {
+			if ("serviceWorker" in navigator) {
+				try {
+					const registration = await navigator.serviceWorker.register("/serviceworker.js", {
+						scope: "/",
+					});
+					if (registration.installing) {
+						console.log("Service worker installing");
+					} else if (registration.waiting) {
+						console.log("Service worker installed");
+					} else if (registration.active) {
+						console.log("Service worker active");
+					}
+				} catch (error) {
+					console.error(`Registration failed with ${error}`);
+				}
+			}
+		};
+
+		registerServiceWorker();
+	</script>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<link rel="icon" type="image/x-icon" href="icon.png">
+	<link rel="manifest" href="manifest.json" />
 	<link rel="stylesheet" type="text/css" href="styles/main.css?v2">
 	<link rel="stylesheet" type="text/css" href="styles/selection.css?v2">
 	<link rel="stylesheet" type="text/css" href="styles/timer.css?v2">
@@ -37,7 +60,6 @@
 	<script src="scripts/practice.js?v4"></script>
 	<script src="scripts/settings.js?v4"></script>
 	<script src="scripts/main.js?v4" defer></script>
-
 </head>
 
 <body class="niceBody" id="bodyid" style="display: none;">
@@ -94,7 +116,8 @@
 					<div id="modeButtons" class="colFlex">
 						<!-- <input type="button" class="abutton" onclick="changeMode('train')" value="Train" /> -->
 						<!-- <input type="button" class="abutton" onclick="changeMode('recap')" value="Recap" /> -->
-						<button class="material-symbols-outlined abutton largeButton" onclick="changeMode('recap')">send</button>
+						<button class="material-symbols-outlined abutton largeButton"
+							onclick="changeMode('recap')">send</button>
 					</div>
 				</div>
 			</div>
@@ -122,10 +145,12 @@
 
 	<dialog id='hintWindow' class="colFlex borderedContainer" onclick="dialogClick(event, this)" autofocus=''>
 		<div class="borderedContainer rowFlex pad center" style="justify-content: space-between;">
-			<span id='prevButton' onclick="previousCase()" class="material-symbols-outlined abutton prevNext">arrow_back</span>
+			<span id='prevButton' onclick="previousCase()"
+				class="material-symbols-outlined abutton prevNext">arrow_back</span>
 			<span id='boxTitle'>
 			</span>
-			<span id='nextButton' onclick="nextCase()" class="material-symbols-outlined abutton prevNext">arrow_forward</span>
+			<span id='nextButton' onclick="nextCase()"
+				class="material-symbols-outlined abutton prevNext">arrow_forward</span>
 		</div>
 		<div class="borderedContainer colFlex center" style="background-color: var(--secondary);">
 			<img id='boxImg' />

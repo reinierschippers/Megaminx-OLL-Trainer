@@ -1,0 +1,88 @@
+{
+    "name": "OLL Trainer",
+    "short_name": "OLL",
+    "start_url": "/index.html",
+    "description": "Alg trainer for megaminx OLL",
+    "display": "standalone",
+    "theme_color": "#B1CFA1",
+    "background_color": "#353535",
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "screenshots": [
+      {
+        "src": "screenshots/vert_dark_trainer.jpg",
+        "sizes": "576x1139",
+        "type": "image/jpg",
+        "form_factor": "narrow",
+        "label": "Mobile dark mode trainer"
+      },      {
+        "src": "screenshots/vert_Light_hint.jpg",
+        "sizes": "576x1139",
+        "type": "image/jpg",
+        "form_factor": "narrow",
+        "label": "Mobile light mode hint"
+      },
+      {
+        "src": "screenshots/vert_light_settings.jpg",
+        "sizes": "576x1139",
+        "type": "image/jpg",
+        "form_factor": "narrow",
+        "label": "Mobile light mode settings"
+      },
+      {
+        "src": "screenshots/vert_light_trainer.jpg",
+        "sizes": "576x1139",
+        "type": "image/jpg",
+        "form_factor": "narrow",
+        "label": "Mobile light mode trainer"
+      },
+      {
+        "src": "screenshots/wide_light_select.png",
+        "sizes": "2560x1279",
+        "type": "image/jpg",
+        "form_factor": "wide",
+        "label": "Desktop light mode select"
+      },
+      {
+        "src": "screenshots/wide_light_hint.png",
+        "sizes": "2560x1279",
+        "type": "image/jpg",
+        "form_factor": "wide",
+        "label": "Desktop light mode hint"
+      },
+      {
+        "src": "screenshots/wide_light_settings.png",
+        "sizes": "2560x1279",
+        "type": "image/jpg",
+        "form_factor": "wide",
+        "label": "Desktop light mode settings"
+      },
+      {
+        "src": "screenshots/wide_light_trainer.png",
+        "sizes": "2560x1279",
+        "type": "image/jpg",
+        "form_factor": "wide",
+        "label": "Desktop light mode trainer"
+      },
+      {
+        "src": "screenshots/wide_dark_select.png",
+        "sizes": "2560x1279",
+        "type": "image/jpg",
+        "form_factor": "wide",
+        "label": "Desktop light mode select"
+      },
+      {
+        "src": "screenshots/wide_dark_trainer.png",
+        "sizes": "2560x1279",
+        "type": "image/jpg",
+        "form_factor": "wide",
+        "label": "Desktop light mode trainer"
+      }
+    ]
+  }
+  
