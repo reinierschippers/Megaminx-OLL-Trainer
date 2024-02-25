@@ -1,10 +1,11 @@
 var baseUrl;
 
 function resize(event) {
+    console.log('test')
     if (window.history.state != 'select') {
         return;
     }
-    var vpWidth = window.innerWidth;
+    var vpWidth = document.documentElement.clientWidth;
     var gnds = document.getElementsByClassName('groupNameDiv');
     var maxWidth = document.getElementById('allSelector').offsetWidth;
     var gap = parseFloat(getComputedStyle(gnds[0].nextSibling).gap);
@@ -129,9 +130,8 @@ function main() {
     loadSelection();
     displayStats();
     window.history.replaceState('select', '', "?select")
-    changeMode(startState)
     document.getElementById('bodyid').style.display = "flex";
-    resize();
+    changeMode(startState)
 }
 
 main();
