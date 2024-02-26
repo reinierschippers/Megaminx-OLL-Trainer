@@ -7,80 +7,67 @@
     "background_color": "#353535",
     "icons": [
       {
-        "src": "icon.png",
+        "src": "mobile.png",
         "sizes": "512x512",
         "type": "image/png"
       }
     ],
     "screenshots": [
       {
-        "src": "screenshots/vert_dark_trainer.jpg",
-        "sizes": "576x1139",
-        "type": "image/jpg",
+        "src": "screenshots/mobile/selection.png",
+        "sizes": "538x1165",
+        "type": "image/png",
         "form_factor": "narrow",
-        "label": "Mobile dark mode trainer"
-      },      {
-        "src": "screenshots/vert_Light_hint.jpg",
-        "sizes": "576x1139",
-        "type": "image/jpg",
+        "label": "Mobile selection ui"
+      },
+      {
+        "src": "screenshots/mobile/trainer.png",
+        "sizes": "538x1165",
+        "type": "image/png",
         "form_factor": "narrow",
-        "label": "Mobile light mode hint"
+        "label": "Mobile trainer ui"
       },
       {
-        "src": "screenshots/vert_light_settings.jpg",
-        "sizes": "576x1139",
-        "type": "image/jpg",
+        "src": "screenshots/mobile/hint.png",
+        "sizes": "538x1165",
+        "type": "image/png",
         "form_factor": "narrow",
-        "label": "Mobile light mode settings"
+        "label": "Mobile hint window"
       },
       {
-        "src": "screenshots/vert_light_trainer.jpg",
-        "sizes": "576x1139",
-        "type": "image/jpg",
+        "src": "screenshots/mobile/settings.png",
+        "sizes": "538x1165",
+        "type": "image/png",
         "form_factor": "narrow",
-        "label": "Mobile light mode trainer"
+        "label": "Mobile settings window"
       },
       {
-        "src": "screenshots/wide_light_select.png",
-        "sizes": "2560x1279",
-        "type": "image/jpg",
+        "src": "screenshots/desktop/selection.png",
+        "sizes": "2563x1283",
+        "type": "image/png",
         "form_factor": "wide",
-        "label": "Desktop light mode select"
+        "label": "Desktop selection ui"
       },
       {
-        "src": "screenshots/wide_light_hint.png",
-        "sizes": "2560x1279",
-        "type": "image/jpg",
+        "src": "screenshots/desktop/trainer.png",
+        "sizes": "2563x1283",
+        "type": "image/png",
         "form_factor": "wide",
-        "label": "Desktop light mode hint"
+        "label": "Desktop trainer ui"
       },
       {
-        "src": "screenshots/wide_light_settings.png",
-        "sizes": "2560x1279",
-        "type": "image/jpg",
+        "src": "screenshots/desktop/hint.png",
+        "sizes": "2563x1283",
+        "type": "image/png",
         "form_factor": "wide",
-        "label": "Desktop light mode settings"
+        "label": "Desktop hint window"
       },
       {
-        "src": "screenshots/wide_light_trainer.png",
-        "sizes": "2560x1279",
-        "type": "image/jpg",
+        "src": "screenshots/desktop/settings.png",
+        "sizes": "2563x1283",
+        "type": "image/png",
         "form_factor": "wide",
-        "label": "Desktop light mode trainer"
-      },
-      {
-        "src": "screenshots/wide_dark_select.png",
-        "sizes": "2560x1279",
-        "type": "image/jpg",
-        "form_factor": "wide",
-        "label": "Desktop light mode select"
-      },
-      {
-        "src": "screenshots/wide_dark_trainer.png",
-        "sizes": "2560x1279",
-        "type": "image/jpg",
-        "form_factor": "wide",
-        "label": "Desktop light mode trainer"
+        "label": "Desktop settings window"
       }
     ]
   }
