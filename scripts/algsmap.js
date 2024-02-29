@@ -321,7 +321,7 @@ var scramblesMap = {
         "R' U F' U R' U2' F R U R' F' U R U' F U2' R  "
     ],
     "108": [
-        " F U R U' F' U R U2 R' U F' U F U R' U' "
+        "F U R U' F' U R U2 R' U F' U F U R'"
     ],
     "109": [
         "R' U' F' U' R' U F R' F' R F' U' F R U2 F R "
