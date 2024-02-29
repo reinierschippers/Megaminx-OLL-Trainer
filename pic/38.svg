@@ -15,7 +15,7 @@ polygon { stroke: black; stroke-width: 5px; stroke-linejoin: round;}
 <polygon class="light" points="90 127 171 68 171 120 139 143"/>
 <polygon class="light" points="171 68 252 10 252 61 171 120"/>
 <polygon class="light" points="252 10 333 68 334 120 252 61"/>
-<polygon class="light" points="333 68 414 127 365 143 334 120"/>
+<polygon class="dark" points="333 68 414 127 365 143 334 120"/>
 <polygon class="light" points="414 127 495 186 446 202 365 143"/>
 <polygon class="light" points="495 186 464 281 415 297 446 202"/>
 <polygon class="light" points="464 281 433 376 403 334 415 297"/>
