@@ -1936,8 +1936,7 @@ var algsInfo = {
     "241": {
         "name": "52B-",
         "a": [
-            "(U') L F U R U' R' U' R U R' F' L'",
-            "(U') F R U2' R' F' U F R U2 R' U F'"
+            "(U2') F U2 R U' R2' U' F' U F R F'"
         ],
         "s": "F R' F' U2' F R F' U2' R' F' U F U' R"
     },
