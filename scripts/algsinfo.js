@@ -1592,7 +1592,7 @@ var algsInfo = {
         "a": [
             "R' F' U2' F U2 R U2' F U R U' R' F'"
         ],
-        "s": "F R U R' U' F' U2 R' U2 F' U2 F R"
+        "s": "F R U R' U' F' U2 R' U2' F' U2 F R"
     },
     "198": {
         "name": "43B+",
