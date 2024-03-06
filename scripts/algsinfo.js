@@ -2,6 +2,10 @@ const timesArrayKey = "ollTimesArray";
 const selectionArrayKey = "ollSelection";
 
 var selCases = [];
+var selectedAlgSets = {
+    "Non-dot": true,
+    "Dot": false
+}
 
 var algsGroups = {
     "Group 1": [1, 2],
@@ -60,27 +64,66 @@ var algsGroups = {
     "Group 53": [250, 251, 252, 253, 254, 255, 256, 257, 258, 259]
 };
 
-var optionalGroups = [
-    "Group 1C",
-    "Group 38",
-    "Group 39",
-    "Group 40",
-    "Group 41",
-    "Group 42",
-    "Group 43",
-    "Group 44",
-    "Group 45",
-    "Group 46",
-    "Group 47",
-    "Group 48",
-    "Group 49",
-    "Group 50",
-    "Group 51",
-    "Group 52",
-    "Group 53"
-];
-
-var optionalAlgsCount = 81;
+var algsets = {
+    "Non-dot": [
+        "Group 1",
+        "Group 2",
+        "Group 3",
+        "Group 4",
+        "Group 5",
+        "Group 6",
+        "Group 7",
+        "Group 8",
+        "Group 9",
+        "Group 10",
+        "Group 11",
+        "Group 12",
+        "Group 13",
+        "Group 14",
+        "Group 15",
+        "Group 16",
+        "Group 17",
+        "Group 18",
+        "Group 19",
+        "Group 20",
+        "Group 21",
+        "Group 22",
+        "Group 23",
+        "Group 24",
+        "Group 25",
+        "Group 26",
+        "Group 27",
+        "Group 28",
+        "Group 29",
+        "Group 30",
+        "Group 31",
+        "Group 32",
+        "Group 33",
+        "Group 34",
+        "Group 35",
+        "Group 36",
+        "Group 37",
+    ],
+    "Dot": [
+        "Group 1C",
+        "Group 38",
+        "Group 39",
+        "Group 40",
+        "Group 41",
+        "Group 42",
+        "Group 43",
+        "Group 44",
+        "Group 45",
+        "Group 46",
+        "Group 47",
+        "Group 48",
+        "Group 49",
+        "Group 50",
+        "Group 51",
+        "Group 52",
+        "Group 53"
+    ]
+}
 
 var algsInfo = {
     "1": {
